@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" xmlns:th="http://www.thymeleaf.org">
+      <head>
+
+          <style>
+              .button {
+                  background-color: #4CAF50; /* Green */
+                  border: none;
+                  color: white;
+                  padding: 15px 32px;
+                  text-align: center;
+                  text-decoration: none;
+                  display: inline-block;
+                  font-size: 16px;
+                  margin: 4px 2px;
+                  cursor: pointer;
+              }
+
+              .button2 {background-color: #008CBA;} /* Blue */
+
+              #customers {
+                  font-family: Arial, Helvetica, sans-serif;
+                  border-collapse: collapse;
+                  width: 100%;
+              }
+
+              #customers td, #customers th {
+                  border: 1px solid #ddd;
+                  padding: 8px;
+              }
+
+              #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+              #customers tr:hover {background-color: #ddd;}
+
+              #customers th {
+                  padding-top: 12px;
+                  padding-bottom: 12px;
+                  text-align: left;
+                  background-color: #04AA6D;
+                  color: white;
+              }
+          </style>
+
+          <script language="javascript" src="export.js"> </script>
+      </head>
+
+<body th:fragment="main">
+<div class="page-wrapper">
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <div class="ms-auto text-end">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/customer">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Library
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 style="text-align: center;" class="card-title">Danh sách khách hàng</h2>
+                        <div class="table-responsive">
+                            <form action="/api/pdf/export" method="get" style="font-size: 15px;">
+
+                                <div class="form-group" style="margin-left: 20px;">
+                                    <button class="button button2">
+                                        <input type="submit" class="btn btn-success" style="padding:8px 50px;color: #fff;" value="Export">
+                                    </button>
+                                </div>
+                            </form>
+                            <table id="customers">
+                                <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Tên KH</th>
+                                    <th>CCCD</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Email</th>
+                                    <th>Ngày đăng ký</th>
+                                    <th>Tình trạng sử dụng nước</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="item,state : ${items}">
+                                    <td th:text="${item.id}"></td>
+                                    <td th:text="${item.name}"></td>
+                                    <td th:text="${item.cccd}"></td>
+                                    <td th:text="${item.address}"></td>
+                                    <td th:text="${item.phoneNumber}"></td>
+                                    <td th:text="${item.email}"></td>
+                                    <td th:text="${item.created}"></td>
+                                    <td th:text="${item.status}"></td>
+                                    <td th:text="Chi tiết..." th:src=""></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
