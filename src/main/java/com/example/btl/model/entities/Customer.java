@@ -24,4 +24,6 @@ public class Customer {
     @Column(name = "status_using")
     private String status;
     private String created;
+    @Column(name = "status")
+    private String statusC;
 }

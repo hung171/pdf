@@ -1,49 +1,49 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en" xmlns:th="http://www.thymeleaf.org">
-      <head>
+<head>
 
-          <style>
-              .button {
-                  background-color: #4CAF50; /* Green */
-                  border: none;
-                  color: white;
-                  padding: 15px 32px;
-                  text-align: center;
-                  text-decoration: none;
-                  display: inline-block;
-                  font-size: 16px;
-                  margin: 4px 2px;
-                  cursor: pointer;
-              }
+    <style>
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
 
-              .button2 {background-color: #008CBA;} /* Blue */
+        .button2 {background-color: #008CBA;} /* Blue */
 
-              #customers {
-                  font-family: Arial, Helvetica, sans-serif;
-                  border-collapse: collapse;
-                  width: 100%;
-              }
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-              #customers td, #customers th {
-                  border: 1px solid #ddd;
-                  padding: 8px;
-              }
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
 
-              #customers tr:nth-child(even){background-color: #f2f2f2;}
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
 
-              #customers tr:hover {background-color: #ddd;}
+        #customers tr:hover {background-color: #ddd;}
 
-              #customers th {
-                  padding-top: 12px;
-                  padding-bottom: 12px;
-                  text-align: left;
-                  background-color: #04AA6D;
-                  color: white;
-              }
-          </style>
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
 
-          <script language="javascript" src="export.js"> </script>
-      </head>
+    <script language="javascript" src="export.js"> </script>
+</head>
 
 <body th:fragment="main">
 <div class="page-wrapper">
@@ -68,17 +68,11 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h2 style="text-align: center;" class="card-title">Danh sách khách hàng</h2>
+                        <h2 style="text-align: center;" class="card-title">Thông tin khách hàng</h2>
                         <div class="table-responsive">
-                            <form action="/api/pdf/export" method="get" style="font-size: 15px;">
-
-                                <div class="form-group" style="margin-left: 20px;">
-                                    <button class="button button2">
-                                        <input type="submit" class="btn btn-success" style="padding:8px 50px;color: #fff;" value="Export">
-                                    </button>
-                                </div>
-                            </form>
-
+                            <button class="button button2">
+                                <a th:href="@{/api/pdf/exportIf(id=*{id})}">Export</a>
+                            </button>
                             <table id="customers">
                                 <thead>
                                 <tr>
@@ -90,11 +84,14 @@
                                     <th>Email</th>
                                     <th>Ngày đăng ký</th>
                                     <th>Tình trạng sử dụng nước</th>
-                                    <th>-></th>
+                                    <th>Số nước/tháng</th>
+                                    <th>Khối lượng sử dụng/tháng</th>
+                                    <th>Đơn giá</th>
+                                    <th>Thành tiền</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="item,state : ${items}">
+                                <tr th:object="${item}">
                                     <td th:text="${item.id}"></td>
                                     <td th:text="${item.name}"></td>
                                     <td th:text="${item.cccd}"></td>
@@ -103,7 +100,10 @@
                                     <td th:text="${item.email}"></td>
                                     <td th:text="${item.created}"></td>
                                     <td th:text="${item.status}"></td>
-                                    <td ><a th:href="@{/customer(id=${item.id})}">Chi tiết...</a></td>
+                                    <td th:text="${item.numWater}"></td>
+                                    <td th:text="${item.volume}"></td>
+                                    <td th:text="${item.price}"></td>
+                                    <td th:text="${item.total}"></td>
                                 </tr>
                             </table>
                         </div>
