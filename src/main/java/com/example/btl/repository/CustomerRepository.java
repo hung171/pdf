@@ -14,7 +14,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     @Query(value = "SELECT c.id as id, c.name as name, c.address as address, c.cccd as cccd, s.numWater as " +
             "numWater, c.email as email, s.volume as volume, c.phoneNumber as phoneNumber, c.status as status, c.created as created, " +
             "CASE WHEN s.volume <=10 " +
-            "THEN 6.869 WHEN s.volume <=20 AND s.volume>10 THEN 8.11 \n" +
+            "THEN 6.869 WHEN s.volume <=20 AND s.volume>10 THEN 8.110 \n" +
             "WHEN s.volume <=30 AND s.volume>20 THEN 9.969 \n" +
             "ELSE 18.318 END AS price \n" +
             "FROM Customer c \n" +
@@ -24,7 +24,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     @Query(value = "SELECT c.id as id, c.name as name, c.address as address, c.cccd as cccd, s.numWater as " +
             "numWater, c.email as email, s.volume as volume, c.phoneNumber as phoneNumber, c.statusC as statusC, c.created as created, " +
             "CASE WHEN s.volume <=10 " +
-            "THEN 6.869 WHEN s.volume <=20 AND s.volume>10 THEN 8.11 \n" +
+            "THEN 6.869 WHEN s.volume <=20 AND s.volume>10 THEN 8.110 \n" +
             "WHEN s.volume <=30 AND s.volume>20 THEN 9.969 \n" +
             "ELSE 18.318 END AS price \n" +
             "FROM Customer c \n" +

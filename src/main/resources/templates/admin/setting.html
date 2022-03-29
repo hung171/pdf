@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            text-align: center;
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 300px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button4 {
+            background-color: white;
+            color: black;
+            border: 2px solid #e7e7e7;
+        }
+
+        .button4:hover {background-color: #e7e7e7;}
+    </style>
+    <script language="javascript" src="../setting.js"> </script>
+</head>
+<body>
+
+<h1 style="text-align: center; color: white">Setting System</h1>
+
+<div class="row">
+    <div class="column" style="background-color:#aaa;">
+        <h2>Auto sending email /months</h2>
+        <label class="switch">
+            <input type="checkbox" id="s1">
+            <span class="slider"></span>
+        </label>
+    </div>
+    <!--<div class="column" style="background-color:##ccc;;">
+        <img style="width: 100%; height: 100%" src="https://toppng.com/uploads/preview/set-up-svg-icon-free-settings-icon-black-11553450888ksmklhagoh.png">
+    </div>-->
+    <div class="column" style="background-color:#bbb;">
+        <h2>Sending warning email</h2>
+        <label class="switch">
+            <input type="checkbox" id = "s2">
+            <span class="slider"></span>
+        </label>
+    </div>
+</div>
+<div style="text-align: center;"><button onclick="update()" class="button button4">Save</button></div>
+
+</body>
+</html>

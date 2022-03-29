@@ -21,6 +21,6 @@ public class BtlApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         Timer timer = new Timer();
-        timer.schedule(sendMailJob, 2000);
+        timer.schedule(sendMailJob, 4000*60);
     }
 }

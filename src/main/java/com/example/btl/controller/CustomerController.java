@@ -1,14 +1,15 @@
 package com.example.btl.controller;
 
-import com.example.btl.model.CustomerModel;
 import com.example.btl.model.dto.CusView;
 import com.example.btl.model.dto.CustomerService;
 import com.example.btl.model.entities.Customer;
+import com.example.btl.model.entities.Setting;
 import com.example.btl.repository.CustomerRepository;
+import com.example.btl.repository.SettingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -27,9 +28,14 @@ public class CustomerController {
         return "/customer/customer";
     }
 
-    @RequestMapping("/customer/exportAll")
-    public String exportAll() {
+    @RequestMapping("/customer/home")
+    public String home() {
         return "/admin/index";
+    }
+
+    @RequestMapping("/customer/setting")
+    public String setting() {
+        return "/admin/setting";
     }
 
     @RequestMapping("/customer")
@@ -40,4 +46,5 @@ public class CustomerController {
         model.addAttribute("id",id);
         return "/customer/info";
     }
+
 }

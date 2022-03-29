@@ -128,7 +128,7 @@ public class CustomerModel {
             PdfPTable table = new PdfPTable(12);
             // Add PDF Table Header ->
             Stream.of("STT", "Name", "CCCD", "Address", "Phone","Email", "Register Date","Status",
-                    "Number of water /m", "Volume using /m", "Price", "Total").forEach(headerTitle ->
+                    "Number of water /m", "Volume using /m", "Price (x1000)", "Total (x1000)").forEach(headerTitle ->
             {
                 PdfPCell header = new PdfPCell();
                 Font headFont =  FontFactory.
