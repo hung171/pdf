@@ -1,7 +1,6 @@
 package com.example.btl.repository;
 
 import com.example.btl.model.dto.CusView;
-import com.example.btl.model.dto.CustomerService;
 import com.example.btl.model.entities.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -29,5 +28,9 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
             "ELSE 18.318 END AS price \n" +
             "FROM Customer c \n" +
             "JOIN Service s on c.id= s.id where c.statusC= '1' or c.statusC= '2'")
+
     List<CusView> findAllByStatus();
+
+    @Query("SELECT u FROM Customer u WHERE u.status = ?1")
+    List<Customer> findByStatus(int status);
 }

@@ -1,7 +1,6 @@
 package com.example.btl.model.dto;
 
 import lombok.Data;
-import lombok.Value;
 
 @Data
 public class CustomerService {
